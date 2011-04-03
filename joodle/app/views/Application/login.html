@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+
+<h1 id="title">Login</h1>
+<p>
+    Please use your UBBCluj.ro email to authentificate!
+</p>
+
+<form id="login" action="@{Application.authenticate}" method="POST" accept-charset="utf-8">
+    <p>
+        <label for="email">Email</label>
+        <input type="text" name="email" value="${flash.email}" id="email" />
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" id="password" />
+    </p>
+    <p class="buttons">
+        <input type="submit" value="Login" id="loginButton" />
+    </p>
+</form>

@@ -16,7 +16,10 @@ public class Application extends Controller {
      * Render login page
      */
     public static void login() {
-        render();
+        if( session.get("userEmail") != null )
+            render();
+        else
+            index();
     }
 
     /**
@@ -25,6 +28,7 @@ public class Application extends Controller {
     public static void logout() {
         flash.success("Deauthentication was successful!");
         session.clear();
+        login();
     }
 
     /**
@@ -41,6 +45,7 @@ public class Application extends Controller {
         }
         connect(user);
         flash.success("Howdy %s!", user.name);
+        index();
     }
 
     /**
@@ -48,7 +53,7 @@ public class Application extends Controller {
      * @param User user, user object
      */
     static void connect(User user) {
-        session.put("logged", user.email);
+        session.put("userEmail", user.email);
     }
 
 }

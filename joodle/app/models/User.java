@@ -29,7 +29,7 @@ public class User extends Model {
      */
     private String parseName( String email ) {
         String[] parsedEmail = email.split("@");
-        if( parsedEmail.length >= 0 )
+        if( parsedEmail.length > 0 )
             return parsedEmail[0];
         else
             return null;
@@ -45,7 +45,7 @@ public class User extends Model {
         String[] parsedEmail = email.split("@");
         if( parsedEmail.length >= 1 ) {
             parsedRole = parsedEmail[1].split(".");
-            if( parsedRole.length >= 0 )
+            if( parsedRole.length > 0 )
                 return parsedRole[0]; //<role>.ubbcluj.ro
             else
                 return null;
@@ -60,7 +60,9 @@ public class User extends Model {
      * @return User object
      */
     public static User findByEmail(String email) {
-        return find("email", email).first();
+        return new User(email, "");
+        // TODO: find a way to check email against the UBB users database
+        //return find("email", email).first();
     }
 
     /**
