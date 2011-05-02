@@ -43,11 +43,12 @@ public class User extends Model {
     private String parseRole( String email ) {
         String[] parsedRole = null;
         String[] parsedEmail = email.split("@");
-        if( parsedEmail.length >= 2 )
-            if ( parsedEmail[1].length() > 0 )
-                parsedRole = parsedEmail[1].split(".");
         
-        if( parsedRole != null && parsedRole.length > 1 )
+        if( parsedEmail.length >= 1 )
+            if ( parsedEmail[1].length() > 0 )
+                parsedRole = parsedEmail[1].split("\\.");
+        
+        if( parsedRole != null && parsedRole.length > 0 )
             return parsedRole[0]; //<role>.ubbcluj.ro
         else
             return null;

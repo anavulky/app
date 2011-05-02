@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import models.User;
 import play.data.validation.Required;
 import play.mvc.*;
