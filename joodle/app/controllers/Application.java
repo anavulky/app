@@ -1,18 +1,30 @@
 package controllers;
 
+import java.util.ArrayList;
 import models.User;
+import play.data.validation.Required;
 import play.mvc.*;
 
 public class Application extends Controller {
+    User user = null;
 
     /**
      * Render index page
      */
     public static void index() {
-        if( session.get("userEmail") != null )
-            render();
-        else
+        User visitor = null;
+        String email = session.get("userEmail");
+        String pass = session.get("userPass");
+        
+        if( email != null )
+            visitor = new User( email, pass );
+        
+        if( visitor == null )
             login();
+        else {
+            Integer visitorRole = visitor.role;
+            render( email, visitorRole );
+        }
     }
 
     /**
@@ -36,7 +48,12 @@ public class Application extends Controller {
      * @param String email, user email
      * @param String password, user password
      */
-    public static void authenticate( String email, String password ) {
+    public static void authenticate(@Required String email, @Required String password ) {
+        if( !models.Helpers.checkEmail(email) ) {
+            flash.error("Please check your email!");
+            login();
+        }
+        
         User user = User.findByEmail(email);
         if( user == null || !user.checkPass(password) ) {
             flash.error("Authentication failed, check your credentials!");
@@ -54,6 +71,7 @@ public class Application extends Controller {
      */
     static void connect(User user) {
         session.put("userEmail", user.email);
+        session.put("userPass", user.password);
     }
 
 }

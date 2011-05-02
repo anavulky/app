@@ -1,0 +1,11 @@
+<div id="user-menu">
+    <ul class="links">
+        #{if email }
+            <li class="user_email">${email}</li>
+            <li class="logout">#{a @Application.logout()}Deautentificare#{/a}</li>
+        #{/if}
+        #{else}
+            <li class="logout">#{a @Application.login()}Autentificare#{/a}</li>
+        #{/else}
+    </ul>
+</div>

@@ -11,15 +11,18 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-        <div class="wrapper">
-            #{if flash?.error}
-                    <div class="error">${flash.error}</div>
-            #{/if}
+        #{include 'user_menu.html' /}
+        <div id="container">
+            <div id="content" class="wrapper">
+                #{if flash?.error}
+                        <div class="error">${flash.error}</div>
+                #{/if}
 
-            #{if flash?.success}
-                    <div class="success">${flash.success}</div>
-            #{/if}
-            #{doLayout /}
+                #{if flash?.success}
+                        <div class="success">${flash.success}</div>
+                #{/if}
+                #{doLayout /}
+            </div>
         </div>
     </body>
 </html>

@@ -26,9 +26,9 @@ public class UserRole {
         String role = this.getRoleName();
         if( role.equals("student") )
             this.roleId = 0; // student.ubbcluj.ro -> students
-        else if(role.equals("student"))
+        else if(role.equals("staff"))
             this.roleId = 1; // staff.ubbcluj.ro -> managers/secretary
-        else if(role.equals("student"))
+        else if(role.equals("cs"))
             this.roleId = 2; // cs.ubbcluj.ro -> CS professors
         else
             this.roleId = 3; // whatever.ubbcluj.ro
