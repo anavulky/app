@@ -24,6 +24,8 @@ a {
     padding: 2px 5px;
     text-align: right;
     margin: 0 auto;
+	position:relative;
+	z-index:10;
 }
 
 #user-menu ul {
