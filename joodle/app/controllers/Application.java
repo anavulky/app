@@ -9,17 +9,17 @@ public class Application extends Controller {
      * Render index page
      */
     public static void index() {
-        render();
+        if( session.get("userEmail") != null )
+            render();
+        else
+            login();
     }
 
     /**
      * Render login page
      */
     public static void login() {
-        if( session.get("userEmail") != null )
-            render();
-        else
-            index();
+        render();
     }
 
     /**
