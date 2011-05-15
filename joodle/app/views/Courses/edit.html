@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Edit Course: ' + course.title /}
+
+<div id="edit-course">
+    <h3>${title}</h3>
+    <form method="post" action="@{Courses.update}/${course.id}">
+        <label for="title">Course Title</label>
+        <p>
+            <input type="text" id ="title" name="course[title]" value="${course.title}" />
+        </p>
+        
+        <label for="content">Course content</label>
+        <p>
+            <textarea id="content" name="course[content]">${course.content}</textarea>
+        </p>
+        <input type="hidden" name="course[id]" value="${course.getId()}" />
+        <p>
+            <input type="submit" value="Update" class="button" />
+        </p>
+    </form>
+</div>
+

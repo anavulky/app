@@ -1,8 +1,12 @@
+#{set email:session.get("userEmail") /}
+#{set roleId:session.get("userRoleId") /}
+
 <div id="user-menu">
     <ul class="links">
         #{if email }
-            <li class="user_email">${email}</li>
-            <li class="logout">#{a @Application.logout()}Deautentificare#{/a}</li>
+            <li class="user_email">${email}(${roleId})</li>
+            <li class="home">#{a @Application.index()}Home#{/a}</li>
+            <li class="logout">#{a @Application.logout()}Logout#{/a}</li>
         #{/if}
     </ul>
 </div>
