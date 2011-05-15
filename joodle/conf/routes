@@ -7,8 +7,13 @@ GET     /                                       Application.index
 
 # Login/Logout page
 GET     /login                                  Application.login
+GET     /authenticate                           Application.login #skip direct access
 GET     /logout                                 Application.logout
 POST    /authenticate                           Application.authenticate
+
+# Courses
+GET     /courses                                Courses.index
+GET     /course/{id}                            Courses.course
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

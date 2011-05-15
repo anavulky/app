@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Course: ' + course.title /}
+
+<div id="course">
+    <h3>${title}</h3>
+    <div class="meta">
+        <small class="ts">${course.timestamp}</small>, <small class="author">${course.author}</small>
+    </div>
+    <div class="content">
+        ${course.content}
+    </div>
+</div>

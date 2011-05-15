@@ -8,28 +8,28 @@ import play.db.jpa.*;
  * Course Model
  * @author stas
  */
+@Entity
 public class Course extends Model {
     /**
      * Course title
      */
     @Lob
-    private String title = null;
+    public String title = null;
     
     /**
      * Course description
      */
-    private String content = null;
+    public String content = null;
 
     /**
      * Course creation date
      */
-    private Date timestamp = null;
+    public Date timestamp = null;
     
     /**
      * Course author
      */
-    @ManyToOne
-    private String author_email = null;
+    public String author_email = null;
     
     /**
      * Course constructor
