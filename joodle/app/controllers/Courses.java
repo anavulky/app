@@ -27,7 +27,7 @@ public class Courses extends Controller {
         
         if( course == null )
             throw new NotFound(null);
-        
+                
         render( course );
     }
     
@@ -36,13 +36,6 @@ public class Courses extends Controller {
      * @param id, the course ID
      */
     public static void edit( Integer id ) {
-        render();
-    }
-
-    /**
-     * Not found handler
-     */
-    private static void not_found() {
         render();
     }
 }
