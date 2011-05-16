@@ -4,24 +4,24 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/base.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/warehouse.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
-        #{include 'user_menu.html' /}
         <div id="container">
+		<div id="header">
+			#{include 'user_menu.html' /}
+		</div>
+            #{doLayout /}
             <div id="content" class="wrapper">
-                #{if flash?.error}
-                        <div class="error">${flash.error}</div>
-                #{/if}
 
                 #{if flash?.success}
                         <div class="success">${flash.success}</div>
                 #{/if}
-                #{doLayout /}
             </div>
         </div>
     </body>
