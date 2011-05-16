@@ -1,8 +1,10 @@
 package models;
 
-import java.util.Date;
+import java.util.*;
 import javax.persistence.*;
-import play.db.jpa.*;
+
+import play.data.validation.*;
+import play.db.jpa.Model;
 
 /**
  * Course Model
@@ -13,23 +15,28 @@ public class Course extends Model {
     /**
      * Course title
      */
-    @Lob
-    public String title = null;
+    @Required
+    public String title;
     
     /**
      * Course description
      */
-    public String content = null;
+    @Lob
+    @Required
+    @MaxSize(10000)
+    public String content;
 
     /**
      * Course creation date
      */
-    public Date timestamp = null;
+    @Required
+    public Date timestamp;
     
     /**
      * Course author
      */
-    public String author_email = null;
+    @Required
+    public String author_email;
     
     /**
      * Course constructor

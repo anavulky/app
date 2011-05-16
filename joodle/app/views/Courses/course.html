@@ -1,10 +1,13 @@
 #{extends 'main.html' /}
-#{set title:'Course: ' + course.title /}
+#{set title:'Course: ' + course.title /}.
+#{set roleId:session.get("userRoleId") /}
 
 <div id="course">
     <h3>${title}</h3>
     <div class="meta">
-        <small class="ts">${course.timestamp}</small>, <small class="author">${course.author}</small>
+        <small class="ts">${course.timestamp}</small>,
+        <small class="author">${course.author}</small>#{if roleId != '0'},
+        <small class="edit-link">#{a @Courses.edit(course.getId())}Edit#{/a}</small>#{/if}
     </div>
     <div class="content">
         ${course.content}

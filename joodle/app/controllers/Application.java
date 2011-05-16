@@ -1,29 +1,17 @@
 package controllers;
 
-import models.User;
 import play.data.validation.Required;
 import play.mvc.*;
 
-public class Application extends Controller {
-    User user = null;
+import models.*;
 
+public class Application extends Controller {
     /**
      * Render index page
      */
     public static void index() {
-        User visitor = null;
-        String email = session.get("userEmail");
-        String pass = session.get("userPass");
-        
-        if( email != null )
-            visitor = new User( email, pass );
-        
-        if( visitor == null )
-            login();
-        else {
-            Integer visitorRole = visitor.role;
-            render( email, visitorRole );
-        }
+        currentUserCan( 0 );
+        render();
     }
 
     /**
@@ -70,7 +58,29 @@ public class Application extends Controller {
      */
     static void connect(User user) {
         session.put("userEmail", user.email);
-        session.put("userPass", user.password);
+        session.put("userRoleId", user.role );
     }
-
+    
+    /**
+     * Check if current user has access to roleId level
+     * @param roledId, the roleId level to check
+     */
+    public static Boolean currentUserCan( Integer roledId ) {
+        Boolean okey = false;
+        String email = session.get("userEmail");
+        Integer userRoleId = Integer.decode( session.get("userRoleId") );
+        
+        if( email != null )
+            okey = true;
+        
+        if( okey && userRoleId >= roledId )
+            okey = true;
+        else
+            okey = false;
+        
+        if( okey == false )
+            Application.login();
+        
+        return okey;
+    }
 }

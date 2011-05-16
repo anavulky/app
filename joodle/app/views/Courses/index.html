@@ -1,12 +1,22 @@
 #{extends 'main.html' /}
 #{set title:'Courses Index' /}
 
-<!-- TODO: Loop all the courses
-#{if course /}
 <div id="courses">
-    <h3>${course?.title}</h3>
-    <div class="meta">
-        <small class="ts">${course?.timestamp}</small>, <small class="author">${course?.author}</small>
-    </div>
+    <ol>
+        #{if courses.size() > 0}
+            #{list items:courses, as:'course' }
+            <li>
+                <h3>#{a @Courses.course(course.getId())}
+                        ${course?.title}
+                    #{/a}</h3>
+                <div class="meta">
+                    <small class="ts">${course?.timestamp}</small>, <small class="author">${course?.author}</small>
+                </div>
+            </li>
+            #{/list}
+        #{/if}
+        #{else}
+            <li>No Courses found. Please #{a @Courses.add()}add#{/a} one.</li>
+        #{/else}
+    </ol>
 </div>
--->

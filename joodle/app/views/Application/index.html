@@ -1,16 +1,16 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Bine ai venit la Joodle!</h1>
+<h1>Welcome to Joodle!</h1>
 
 <!-- Teachers -->
-#{if visitorRole > 0}
-<h3>Panoul de control</h3>
+#{if roleId > 0}
+<h3>Control Panel</h3>
 
 #{/if}
 
 <!-- Students -->
 #{else}
-<h3>Ultimele activități</h3>
+<h3>Last Events</h3>
 
 #{/else}

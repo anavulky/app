@@ -12,6 +12,16 @@
         #{get 'moreScripts' /}
     </head>
     <body>
+        #{if request.controller == 'Application' }
+            #{include 'user_menu.html' /}
+        #{/if}
+        #{else}
+            #{include '/user_menu.html' /}
+        #{/else}
+        
+        #{if request.controller != 'Application' }
+            #{include request.controller + '/submenu.html'/}
+        #{/if}
         <div id="container">
 		<div id="header">
 			#{include 'user_menu.html' /}

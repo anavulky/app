@@ -1,0 +1,6 @@
+<ul>
+    #{if request.action != 'Courses.index'}
+        <li>#{a @Courses.index()}Index#{/a}</li>
+    #{/if}
+    <li>#{a @Courses.add()}Add#{/a}</li>
+</ul>
